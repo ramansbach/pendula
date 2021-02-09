@@ -46,6 +46,70 @@ The project has the following structure:
          |- ...
 
 
+### Using `shablona` as a template
+
+Let's assume that you want to create a small scientific Python project
+called `smallish`. Maybe you already have some code that you are
+interested in plugging into the module file, and some ideas about what
+the tests might look like.
+
+To use this repository as a template, click the green "use this template"
+button on the front page of the "shablona" repository.
+
+In "Repository name" enter the name of your project. For example, enter 
+`smallish` here. After that, you can hit the "Create repository from template" 
+button.
+
+You should then be able to clone the new repo into your machine. You will want
+to change the names of the files. For example, you will want to move
+`shablona/shablona.py` to be called `smallish/smallish.py`
+
+	git mv shablona smallish
+	git mv smallish/shablona.py smallish/smallish.py
+	git mv smallish/tests/test_shablona.py smallish/tests/test_smallish.py
+
+Make a commit recording these changes. Something like:
+
+	git commit -a -m"Moved names from `shablona` to `smallish`"
+
+You will probably want to remove all the example data:
+
+	git rm smallish/data/*
+	git commit -a -m"Removed example `shablona` data"
+
+Possibly, you will want to add some of your own data in there.
+
+You will want to edit a few more places that still have `shablona` in them. Type
+the following to see where all these files are:
+
+	git grep shablona
+
+You can replace `shablona` for `smallish` quickly with:
+
+	git grep -l 'shablona' | xargs sed -i 's/shablona/smallish/g'
+
+This very file (README.md) should be edited to reflect what your project is
+about.
+
+Other places that contain this name include the `doc/conf.py` file, which
+configures the sphinx documentation, as well as the `doc/Makefile` file (edit
+carefully!), and the `doc/index.rst` file.
+
+The `.coveragerc` file contains a few mentions of that name, as well as the
+`.travis.yml` file. This one will also have to be edited to reflect your PyPI
+credentials (see [above](### Distribution)).
+
+Edit all the mentions of `shablona` in the `shablona/__init__.py` file, and in
+the `shablona/version.py` file as well.
+
+Finally, you will probably want to change the copyright holder in the `LICENSE`
+file to be you. You can also replace the text of that file, if it doesn't match
+your needs.
+
+At this point, make another commit, and continue to develop your own code based
+on this template.
+
+
 In the following sections we will examine these elements one by one. First,
 let's consider the core of the project. This is the code inside of
 `shablona/shablona.py`. The code provided in this file is intentionally rather
@@ -443,66 +507,3 @@ with this repository, and which you could extend further:
   commands as `git shortlog -sn` could take them into account (see
   `git shortlog --help`)
 
-
-### Using `shablona` as a template
-
-Let's assume that you want to create a small scientific Python project
-called `smallish`. Maybe you already have some code that you are
-interested in plugging into the module file, and some ideas about what
-the tests might look like.
-
-To use this repository as a template, click the green "use this template"
-button on the front page of the "shablona" repository.
-
-In "Repository name" enter the name of your project. For example, enter 
-`smallish` here. After that, you can hit the "Create repository from template" 
-button.
-
-You should then be able to clone the new repo into your machine. You will want
-to change the names of the files. For example, you will want to move
-`shablona/shablona.py` to be called `smallish/smallish.py`
-
-	git mv shablona smallish
-	git mv smallish/shablona.py smallish/smallish.py
-	git mv smallish/tests/test_shablona.py smallish/tests/test_smallish.py
-
-Make a commit recording these changes. Something like:
-
-	git commit -a -m"Moved names from `shablona` to `smallish`"
-
-You will probably want to remove all the example data:
-
-	git rm smallish/data/*
-	git commit -a -m"Removed example `shablona` data"
-
-Possibly, you will want to add some of your own data in there.
-
-You will want to edit a few more places that still have `shablona` in them. Type
-the following to see where all these files are:
-
-	git grep shablona
-
-You can replace `shablona` for `smallish` quickly with:
-
-	git grep -l 'shablona' | xargs sed -i 's/shablona/smallish/g'
-
-This very file (README.md) should be edited to reflect what your project is
-about.
-
-Other places that contain this name include the `doc/conf.py` file, which
-configures the sphinx documentation, as well as the `doc/Makefile` file (edit
-carefully!), and the `doc/index.rst` file.
-
-The `.coveragerc` file contains a few mentions of that name, as well as the
-`.travis.yml` file. This one will also have to be edited to reflect your PyPI
-credentials (see [above](### Distribution)).
-
-Edit all the mentions of `shablona` in the `shablona/__init__.py` file, and in
-the `shablona/version.py` file as well.
-
-Finally, you will probably want to change the copyright holder in the `LICENSE`
-file to be you. You can also replace the text of that file, if it doesn't match
-your needs.
-
-At this point, make another commit, and continue to develop your own code based
-on this template.
