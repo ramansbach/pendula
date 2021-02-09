@@ -148,7 +148,7 @@ The `Makefile` contains an instruction for running this command as well:
 
 We place the module code in a file called `pendula.py` in directory called
 `pendula`. This structure is a bit confusing at first, but it is a simple way
-to create a structure where when we type `import pendula as sb` in an
+to create a structure where when we type `import pendula as pu` in an
 interactive Python session, the classes and functions defined inside of the
 `pendula.py` file are available in the `sb` namespace. For this to work, we
 need to also create a file in `__init__.py` which contains code that imports
