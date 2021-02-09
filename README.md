@@ -1,7 +1,7 @@
 ## pendula
 [![Build Status](https://travis-ci.org/uwescience/shablona.svg?branch=master)](https://travis-ci.org/uwescience/shablona)
 
-Pendula is a modified form of shablona, a template project for small scientific python projects. The
+Pendula is a modified form of shablona (https://github.com/uwescience/shablona), a template project for small scientific python projects. The
 recommendations we make here follow the standards and conventions of much of
 the scientific Python eco-system. Following these standards and recommendations
 will make it easier for others to use your code, and can make it easier for you
