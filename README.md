@@ -286,8 +286,7 @@ following from the command line:
     
 ### Project Data
 
-In this case, the project data is rather small, and recorded in csv
-files.  Thus, it can be stored alongside the module code.  Even if the
+For projects where the data is rather small, data can be stored alongside the module code.  Even if the
 data that you are analyzing is too large, and cannot be effectively
 tracked with github, you might still want to store some data for
 testing purposes.
