@@ -118,6 +118,32 @@ experiment. It's not too important to know what it does, but if you are really
 interested, you can read all about it
 [here](http://arokem.github.io/2014-08-12-learn-optimization.html).
 
+### Styling
+
+It is a good idea to follow the PEP8 standard for code formatting. Common code
+formatting makes code more readable, and using tools such as `flake8` (which
+combines the tools `pep8` and `pyflakes`) can help make your code more readable,
+avoid extraneous imports and lines of code, and overall keep a clean project
+code-base.
+
+Some projects include `flake8` inside their automated tests, so that every pull
+request is examined for code cleanliness.
+
+In this project, we have run `flake8` most (but not all) files, on
+most (but not all) checks:
+
+```
+flake8 --ignore N802,N806 `find . -name *.py | grep -v setup.py | grep -v /doc/`
+```
+
+This means, check all .py files, but exclude setup.py and everything in
+directories named "doc". Do all checks except N802 and N806, which enforce
+lowercase-only names for variables and functions.
+
+The `Makefile` contains an instruction for running this command as well:
+
+    make flake8
+
 ### Module code
 
 We place the module code in a file called `pendula.py` in directory called
@@ -149,23 +175,6 @@ we enforce this by running a code-linter called
 [`flake8`](http://flake8.pycqa.org/en/latest/), which automatically checks the
 code and reports any violations of the PEP8 standard (and checks for other
   general code hygiene issues), see below.
-
-### Project Data
-
-In this case, the project data is rather small, and recorded in csv
-files.  Thus, it can be stored alongside the module code.  Even if the
-data that you are analyzing is too large, and cannot be effectively
-tracked with github, you might still want to store some data for
-testing purposes.
-
-Either way, you can create a `pendula/data` folder in which you can
-organize the data. As you can see in the test scripts, and in the
-analysis scripts, this provides a standard file-system location for
-the data at:
-
-    import os.path as op
-    import pendula as sb
-    data_path = op.join(sb.__path__[0], 'data')
 
 
 ### Testing
@@ -274,32 +283,43 @@ verbose and informative output from the top-level directory, by issuing the
 following from the command line:
 
     make test
+    
+### Project Data
 
-### Styling
+In this case, the project data is rather small, and recorded in csv
+files.  Thus, it can be stored alongside the module code.  Even if the
+data that you are analyzing is too large, and cannot be effectively
+tracked with github, you might still want to store some data for
+testing purposes.
 
-It is a good idea to follow the PEP8 standard for code formatting. Common code
-formatting makes code more readable, and using tools such as `flake8` (which
-combines the tools `pep8` and `pyflakes`) can help make your code more readable,
-avoid extraneous imports and lines of code, and overall keep a clean project
-code-base.
+Either way, you can create a `pendula/data` folder in which you can
+organize the data. As you can see in the test scripts, and in the
+analysis scripts, this provides a standard file-system location for
+the data at:
 
-Some projects include `flake8` inside their automated tests, so that every pull
-request is examined for code cleanliness.
+    import os.path as op
+    import pendula as pu
+    data_path = op.join(pu.__path__[0], 'data')
+    
+### Installation
 
-In this project, we have run `flake8` most (but not all) files, on
-most (but not all) checks:
+For installation and distribution we will use the python standard
+library `setuptools` module. This module uses a `setup.py` file to
+figure out how to install your software on a particular system. For a
+small project such as this one, managing installation of the software
+modules and the data is rather simple.
 
-```
-flake8 --ignore N802,N806 `find . -name *.py | grep -v setup.py | grep -v /doc/`
-```
+A `pendula/version.py` contains all of the information needed for the
+installation and for setting up the [PyPI
+page](https://pypi.python.org/pypi/pendula) for the software. This
+also makes it possible to install your software with using `pip` and
+`easy_install`, which are package managers for Python software. The
+`setup.py` file reads this information from there and passes it to the
+`setup` function which takes care of the rest.
 
-This means, check all .py files, but exclude setup.py and everything in
-directories named "doc". Do all checks except N802 and N806, which enforce
-lowercase-only names for variables and functions.
-
-The `Makefile` contains an instruction for running this command as well:
-
-    make flake8
+Much more information on packaging Python software can be found in the
+[Hitchhiker's guide to
+packaging](https://the-hitchhikers-guide-to-packaging.readthedocs.org).
 
 ### Documentation
 
@@ -350,27 +370,6 @@ configuration file is in `doc/conf.py`:
 ![RTD conf](https://github.com/uwescience/pendula/blob/master/doc/_static/RTD-advanced-conf.png)
 
  http://pendula.readthedocs.org/en/latest/
-
-
-### Installation
-
-For installation and distribution we will use the python standard
-library `setuptools` module. This module uses a `setup.py` file to
-figure out how to install your software on a particular system. For a
-small project such as this one, managing installation of the software
-modules and the data is rather simple.
-
-A `pendula/version.py` contains all of the information needed for the
-installation and for setting up the [PyPI
-page](https://pypi.python.org/pypi/pendula) for the software. This
-also makes it possible to install your software with using `pip` and
-`easy_install`, which are package managers for Python software. The
-`setup.py` file reads this information from there and passes it to the
-`setup` function which takes care of the rest.
-
-Much more information on packaging Python software can be found in the
-[Hitchhiker's guide to
-packaging](https://the-hitchhikers-guide-to-packaging.readthedocs.org).
 
 
 ### Continuous integration
