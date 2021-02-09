@@ -5,7 +5,7 @@ API
 Classes
 -------
 
-.. currentmodule:: shablona
+.. currentmodule:: pendula
 
 .. autosummary::
    :template: class.rst
