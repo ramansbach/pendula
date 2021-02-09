@@ -13,7 +13,7 @@ class Pendulum:
         print("I am a pendulum")
         
     def eqns_of_motion(self):
-        print("we are the equatiosn of motion")
+        print("we are the equations of motion")
         
     def simulate(self):
         print("simulate me!")
